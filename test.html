@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Leaflet-OpenWeatherMap Example</title>
+    <meta charset="utf-8" />
+    <style>
+        html, body, #map {
+            height: 100%;
+            margin: 0px;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="leaflet-owm.css" />
+    <link rel="stylesheet" href="iconLayers.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+  integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+  crossorigin=""/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/leaflet.js"
+  integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+  crossorigin=""></script>
+  <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
+  <script src="leaflet-owm.js"></script>
+    <script src="iconLayer.js"></script>
+</head>
+<body>
+
+    <div id="map"></div>
+ 
+    <script>
+        var providers = {};
+        providers['OSM'] = {
+            title: 'OSM',
+            icon: 'img/layers-osm.png',
+            layer: L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            })
+        };
+        // providers['Satellite'] = {
+        //     title: 'MODIS',
+        //     icon: 'img/layers-satellite.png',
+        //     layer: L.tileLayer('http://{s}.sat.owm.io/sql/{z}/{x}/{y}?select=b1,b4,b3&from=modis&order=last&color=modis&appid=d22d9a6a3ff2aa523d5917bbccc89211', {
+        //         maxZoom: 19,
+        //         attribution: '&copy; <a href="http://owm.io">VANE</a>'
+        //     })
+        // };
+    </script>
+    <script>
+        var map = L.map('map').setView([60, 50], 5);
+        
+        //http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=d9cfe451d5a775abaf178aec4951b4b0
+        var Temp = L.tileLayer('https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=d22d9a6a3ff2aa523d5917bbccc89211', {
+            maxZoom: 18,
+            attribution: '&copy; <a href="http://owm.io">VANE</a>',
+            id: 'temp'
+        }),
+        Precipitation = L.tileLayer('https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=d22d9a6a3ff2aa523d5917bbccc89211', {
+            maxZoom: 18,
+            attribution: '&copy; <a href="http://owm.io">VANE</a>'
+        }),
+        Wind = L.tileLayer('https://tile.openweathermap.org/map/wind_new/{z}/{x}/{y}.png?appid=d22d9a6a3ff2aa523d5917bbccc89211', {
+            maxZoom: 18,
+            attribution: '&copy; <a href="http://owm.io">VANE</a>'
+        }),
+        Pressure = L.tileLayer('https://tile.openweathermap.org/map/pressure_new/{z}/{x}/{y}.png?appid=d22d9a6a3ff2aa523d5917bbccc89211', {
+            maxZoom: 18,
+            attribution: '&copy; <a href="http://owm.io">VANE</a>'
+        }),
+        Clouds = L.tileLayer('https://tile.openweathermap.org/map/clouds_new/{z}/{x}/{y}.png?appid=d22d9a6a3ff2aa523d5917bbccc89211', {
+            maxZoom: 18,
+            attribution: '&copy; <a href="http://owm.io">VANE</a>'
+        });
+        var owm = new L.OWMLayer({key: '91e263778af92361ac356d09d927d749'});
+        map.addLayer(owm);
+        Temp.addTo(map);
+        var overlays = {"Temperature": Temp, "Precipitation": Precipitation, "Clouds": Clouds, "Pressure": Pressure, "Wind": Wind};
+        L.control.layers(overlays, null, {collapsed:false}).addTo(map);
+        var layers = [];
+            for (var providerId in providers) {
+                layers.push(providers[providerId]);
+            }
+        L.control.iconLayers(layers).addTo(map);
+    </script>
+</body>
+</html>

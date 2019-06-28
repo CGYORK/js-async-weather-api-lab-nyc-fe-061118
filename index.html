@@ -4,6 +4,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJ_4WZ7DodyxTIfMe1Bc8g1_V0B9MSgrY"></script>
   <script src="index.js"></script>
   <link rel="stylesheet" href="css/index.css">
 </head>
@@ -16,87 +17,85 @@
 
   <h2>Today</h2>
   <section id = "today-card">
-    
-  </section>
-    <span id = "map">1</span>
+    <span id = "map-canvas"></span>
     <div id = "weather-card">
        <div class ="weather-row">
         <div>
           <span id="temp"></span>
         </div>
-        <div class = "weather-info">Temperature</div>
+        <div class = "weather-info" id = 'weather'></div>
       </div>
       <div class ="weather-row">
         <div>
-         <span id='humidity'></span>
+         <span id = "humidity"></span>
         </div>
         <div class = "weather-info">Humidity</div>
        </div> 
+      <div class ="weather-row">
+        <div>
+         <span id="cloudCover"></span>
+        </div>
+        <div class = "weather-info">Cloud Coverage</div>
+      </div>      
+      <div class ="weather-row">
+        <div>
+         <span id="windSpeed"></span>
+        </div>
+        <div class = "weather-info">Wind Speed</div>
+      </div> 
+      <div class ="weather-row">
+        <div>
+         <span id="minMax"></span>
+        </div>
+        <div class = "weather-info">Temperature</div>
+      </div> 
     </div>
-  <section id="today">
+  </section>
+
+  <!-- Optional -->
+  <h2>Five Day (3-Hour) Forcast</h2>
+  <canvas id="WeatherChart"></canvas>
+  <aside>
+      <section id="today fiveDayTime">
     <table>
       <tr>
-        <th >
-          Current Temperature
+        <th class = "header">
+          Day (and time)
         </th>
-        <th>
-          Low
+        <th class = "header">
+          Description
         </th>
-        <th>
-          High
+        <th class = "header">
+          High/Low
         </th>
-        <th>
+        <th class = "header">
+          Cloud Coverage
+        </th>
+        <th class = "header">
+          Wind
+        </th>
+        <th class = "header">
           Humidity
-        </th>
-        <th>
-          Cloud Cover
         </th>
       </tr>
       <tr>
-        <td id="temp">
-
+        <td id="fiveDayTime">
         </td>
-        <td id="low">
-
+        <td id="fiveDayDescription">
         </td>
-        <td id="high">
-
+        <td id="fiveDayHighLow">
         </td>
-        <td id="humidity">
-
+        <td id="fiveDayCloudCoverage">
         </td>
-        <td id="cloudCover">
-
+        <td id="fiveDayWind">
         </td>
-        <td id="sunrise">
-
-        </td>
-        <td id="sunset">
-
+        <td id="fiveDayHumidity">
         </td>
       </tr>
     </table>
   </section>
-
-  <!-- Optional -->
-  <canvas id="WeatherChart"></canvas>
-  <h2>Five Day Forcast</h2>
-  <aside>
-    <ul>
-      <li>
-        <div>
-          <p id="fiveDayDateTime"></p>
-        </div>
-      </li>
-      <li>
-        <div id="fiveDayTemp"></div>
-      </li>
-       <li>
-        <div id="fiveDayHumidity"></div>
-      </li>
-    </ul>
+    
   </aside>
-
 
 </body>
 </html>

@@ -9,6 +9,10 @@ html, body {
   border-color: #000000;
 }
 
+.material-icons {
+  vertical-align: bottom;
+}
+
 form {
   margin: 0px;
 }
@@ -45,21 +49,64 @@ h2 {
   text-align: center;
 }
 
-section {
+#today div {
+  margin: 0 auto;
+  font-size: 20px;
+  font-family: "Source Sans Pro", Helvetica, Arial, Geneva, sans-serif;
+  padding-left: 10px;
+  padding-right: 30px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  align-items: center;
+  justify-content: center;
+}
+
+canvas {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
 }
 
-#weather-card {
+#today-card {
+  margin: 0 auto;
+  width: 80%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+#WeatherChart {
+  margin: 0 auto;
+  width: 80%;
+  align-items: center;
+  justify-content: center;
+}
+
+#map-canvas {
+  margin-right: 10px;
   background: #ffffff;
-  width: 15%;
+  width: 70%;
+  height: 550px;
   text-align: center;
   font-size: 175%;
   padding-left: 30px;
   padding-right: 30px;
   padding-bottom: 30px;
+}
+
+#weather-card {
+  margin-left: 10px;
+  background: #ffffff;
+  width: 15%;
+  height: 550px;
+  text-align: center;
+  font-size: 150%;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+  font-family: "Source Sans Pro", Helvetica, Arial, Geneva, sans-serif;
 }
 
 .weather-row {
@@ -70,25 +117,12 @@ section {
 }
 
 .weather-info {
-  font-size: 75%;
   padding-left: 5px;
 }
 
 table {
-  width: 90%;
-  border: 1px solid black;
-  background: lightyellow;
-
-}
-
-th {
-  border-collapse: collapse;
-  width: 20%;
-}
-
-td {
-  text-align: center;
-  font-size: 175%;
+  background: white;
+  width: 1000px;
 }
 
 aside {
@@ -100,7 +134,20 @@ aside {
 
 aside div {
   text-align: center;
-  box-shadow: 3px 4px rgba(0,0,0,0.5);
-  margin: 5px;
-  background-color: lightyellow
+  background-color: white;
+  padding-left: 10px;
+  padding-right: 30px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  border-bottom: 0.5px solid lightgrey;
+  height: 35px;
+}
+
+img {
+  height: 35px;
+}
+
+.header {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
